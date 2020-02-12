@@ -64,6 +64,7 @@ sequelize.sync()
     }
     return user;
   })
+  /** @method createCart */
   .then(user => user.createCart())
   .then(() => {
     // console.log(user);

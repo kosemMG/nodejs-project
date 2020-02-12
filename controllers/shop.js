@@ -55,6 +55,7 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
   const productId = req.body.productId;
+  /** @method addProduct */
   let fetchedCart;
   let newQuantity = 1;
   req.user.getCart()
@@ -63,6 +64,7 @@ exports.postCart = (req, res, next) => {
       return cart.getProducts({ where: { id: productId } });
     })
     .then(productData => {
+      /** @type {{cartItem: {quantity}}} */
       let product;
       if (productData.length > 0) {
         product = productData[0];

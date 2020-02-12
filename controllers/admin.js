@@ -9,6 +9,7 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
+  /** @method createProduct */
   req.user.createProduct({
     title: req.body.title,
     imageUrl: req.body.imageUrl,
@@ -19,6 +20,16 @@ exports.postAddProduct = (req, res, next) => {
     .catch(error => console.log(error));
 };
 
+/**
+ * @param req {{
+ *      query: {edit: {boolean}},
+ *      params: {productId: {string}},
+ *      user: {getProducts}
+ *     }}
+ * @param res
+ * @param next
+ * @returns {void|*|Response}
+ */
 exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit;
   if (!editMode) {
